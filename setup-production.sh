@@ -78,17 +78,20 @@ validate_environment() {
         exit 1
     fi
     
-    source .env
+    # Extract variables safely
+    DOMAIN=$(grep "^DOMAIN=" .env | cut -d'=' -f2)
+    SITES=$(grep "^SITES=" .env | cut -d'=' -f2)
+    LETSENCRYPT_EMAIL=$(grep "^LETSENCRYPT_EMAIL=" .env | cut -d'=' -f2)
+    DB_PASSWORD=$(grep "^DB_PASSWORD=" .env | cut -d'=' -f2)
     
     # Check required variables
     required_vars=("DOMAIN" "SITES" "LETSENCRYPT_EMAIL" "DB_PASSWORD")
     missing_vars=()
     
-    for var in "${required_vars[@]}"; do
-        if [ -z "${!var}" ]; then
-            missing_vars+=("$var")
-        fi
-    done
+    if [ -z "$DOMAIN" ]; then missing_vars+=("DOMAIN"); fi
+    if [ -z "$SITES" ]; then missing_vars+=("SITES"); fi
+    if [ -z "$LETSENCRYPT_EMAIL" ]; then missing_vars+=("LETSENCRYPT_EMAIL"); fi
+    if [ -z "$DB_PASSWORD" ]; then missing_vars+=("DB_PASSWORD"); fi
     
     if [ ${#missing_vars[@]} -ne 0 ]; then
         print_error "Missing required environment variables:"

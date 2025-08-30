@@ -7,7 +7,23 @@ Everything about [Frappe](https://github.com/frappe/frappe) and [ERPNext](https:
 
 To get started you need [Docker](https://docs.docker.com/get-docker/), [docker-compose](https://docs.docker.com/compose/), and [git](https://docs.github.com/en/get-started/getting-started-with-git/set-up-git) setup on your machine. For Docker basics and best practices refer to Docker's [documentation](http://docs.docker.com).
 
-Once completed, chose one of the following two sections for next steps.
+## 🚀 Quick Production Setup
+
+For a complete production-ready deployment with automatic SSL, monitoring, and all best practices:
+
+```bash
+git clone https://github.com/Aadhira-Tech/frappe_docker
+cd frappe_docker
+./setup-production.sh setup    # Configure environment
+./setup-production.sh deploy   # Deploy production stack
+./setup-production.sh create-site yourdomain.com  # Create your site
+```
+
+**📖 [Complete Production Setup Guide](PRODUCTION_SETUP.md)** - Comprehensive guide with security, monitoring, backups, and scaling.
+
+## Development & Testing
+
+Choose one of the following sections for development or testing:
 
 ### Try in Play With Docker
 

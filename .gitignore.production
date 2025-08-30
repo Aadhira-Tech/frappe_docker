@@ -1,0 +1,37 @@
+# .gitignore additions for production setup
+
+# Environment files with sensitive data
+.env
+*.env
+!production.env
+!example.env
+
+# SSL certificates and secrets
+cert-data/
+letsencrypt/
+secrets/
+
+# Backup files
+backups/
+*.sql
+*.sql.gz
+*.tar
+*.tar.gz
+
+# Log files
+logs/
+*.log
+
+# Local development overrides
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Runtime data
+sites/
+redis-data/
+db-data/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
